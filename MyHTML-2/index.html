@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ドットインストール　詳解HTML フォーム部品編のお勉強</title>
+</head>
+
+<body>
+    <!--label内のfor id は省略可能-->
+    <label>氏名<input type="text" /></label>
+    <!--記入例に使えるが基本はラベルの方がいいらしい-->
+    <!-- <input type="text" placeholder="shige" />-->
+    <input type="text" value="hello" />
+    <input type="password" />
+    <textarea></textarea>
+    <textarea>Hello</textarea>
+    <label for="color">
+      <!--multipleは複数選択可能。選択する際の操作はctrl押しながら-->
+      <!-- <select id="color" size="4" multiple>-->
+      <select id="color">
+        <option>色1</option>
+        <!-- デフォルトで設定しておきたいときはselected-->
+        <option selected>色2</option>
+        <option>色3</option>
+        <option>色4</option>
+      </select>
+     <!-- グループ化するのはfieldset、キャプションつけるのはlegend-->
+    <fieldset>
+    <legend>好きなお肉(複数選択)</legend>
+        </label><input type="checkbox" checked />牛</label>
+    <label> <input type="checkbox" />豚 </label>
+    <label> <input type="checkbox" />羊 </label>
+    </fieldset>
+    <!-- ラジオボタンでかつ、どれか１つのみ選択できるようにname属性があることがポイント-->
+    <fieldset>
+        <legend>好きなお肉（どれか一つ）</legend>
+        </label><input type="radio" checked name="food" />牛</label>
+        <label> <input type="radio" name="food"/>豚 </label>
+        <label> <input type="radio" name="food"/>羊 </label>
+    </fieldset>
+    <!--buttonタグの作り方2種類-->
+    <input type="button" value="OK">
+    <button>OK</button>
+    <!--buttonタグの無効化-->
+    <input type="button" value="OK" disabled>
+    <button disabled>OK</button>
+    <!--form  form タグの中で button タグを書くと、このボタンをクリックしたら、こちらに入力された値が process.php に post 形式で送信されるという仕組みになっております。-->
+    <form action="process.php" method="post">
+        <!--ただここでこれらの値が送信されるのですが、プログラム側でどれがどの値かわかるように識別子を付けてあげる必要があります。-->
+        <label>担当者<input type="text" name="username"></label>
+        <label>タスク<input type="text" name="task"></label>
+        <button>追加</button>
+    </form>
+    <!-- <form method="get" action="testform.php"> -->
+    <form method="post" action="testform.php">
+        <input type="text" name="text1">
+        <input type="submit" value="送信ボタン">
+    </form>
+</body>
+
+</html>
